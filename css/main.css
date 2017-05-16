@@ -25,15 +25,19 @@ header {
 }
 
 .side1 {
-	background-image: url(../img/thumb1.jpg);
+	background-image: url(../img/1.jpg);
 }
 
 .side2 {
-	background-image: url(../img/thumb2.jpg);
+	background-image: url(../img/2.jpg);
 }
 
 .side3 {
-	background-image: url(../img/thumb3.jpg);
+	background-image: url(../img/3.jpg);
+}
+
+.side4 {
+	background-image: url(../img/4.jpg);
 }
 
 header .zhezhao {
@@ -238,7 +242,6 @@ header nav .lianjie {
 	background-image: url('../img/gengduo.jpg');
 }
 
-
 .production1 .zhezhao {
 	width: 100%;
 	height: 100%;
@@ -326,10 +329,10 @@ header nav .lianjie {
 }
 
 .production2 {
+	width: 100%;
 	position: relative;
 	padding: 0 15px;
 	height: 300px;
-	margin-bottom: 25px;
 }
 
 .production2-main {
@@ -365,18 +368,21 @@ header nav .lianjie {
 }
 
 .p5 {
-	background-image: url('../img/jingdong.png');
+	background-image: url('../img/jingdong.jpg');
 }
 
 .p6 {
 	background-image: url('../img/gengduo.jpg');
 }
+
 .p7 {
 	background-image: url('../img/zgyd.jpg');
 }
+
 .p8 {
 	background-image: url('../img/sfw.png');
 }
+
 .p9 {
 	background-image: url('../img/food.jpg');
 }
@@ -480,4 +486,27 @@ footer {
 	width: 100%;
 	height: 100px;
 	background: black;
+}
+.otherhref{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.infomation{
+	width: 100%;
+	height: 500px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+.zym{
+	text-align: center;
+	color: white;
+	font-size: 25px;
+	margin-top: 20px;
 }
