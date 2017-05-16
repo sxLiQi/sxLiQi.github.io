@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气</title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function () {
+
+            function updata(city) {
+                $(".cityname span").html(city);
+                $.get(
+                    "https://free-api.heweather.com/v5/weather",
+                    {
+                        city: city,
+                        key: "5def958aea5042049ca7a3cd2fca2017"
+                    },
+                    function (r) {
+                        $("tbody").empty();
+                        var arr = ["今天", "明天", "后天"];
+                        $.each(r.HeWeather5[0].daily_forecast, function (i, v) {
+                            $("<tr>").html(function () {
+                                return "<td>" + arr[i] + "</td>" +
+                                    "<td>" + v.date + "</td>" +
+                                    "<td>" +
+                                    "<img src='img/" + v.cond.code_d + ".png'>" +
+                                    "<img src='img/" + v.cond.code_n + ".png'>" +
+                                    "</td>" +
+                                    "<td>" + v.tmp.min + "℃~" + v.tmp.max + "℃</td>" +
+                                    "<td>" + v.wind.sc + "</td>"
+                            }).appendTo($("tbody"));
+                        });
+
+                        $.each(r.HeWeather5[0].suggestion, function (i, v) {
+                            $("#" + i).find("div").eq(1).text(v.brf).end().eq(2).text(v.txt);
+                        })
+                    });
+            }
+
+            $.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js", function (r) {
+                var city = remote_ip_info.city;
+                updata(city);
+            });
+
+            $(".toggle").click(function () {
+                $(".citychoose").slideToggle();
+            }).one("click", function () {
+                $.getJSON("js/china-city-list.json", function (r) {
+                    var province = {};
+
+                    $.each(r, function (i, v) {
+                        if (!province[v.provinceZh]) {
+                            province[v.provinceZh] = [];
+                        }
+                        province[v.provinceZh].push(v.cityZh);
+                    });
+
+                    $.each(province, function (i, v) {
+                        $("<option>").text(i).val(i).appendTo($("#province"));
+                    });
+
+                    $("#province").change(function () {
+                        $("#city").html('<option value="">请选择城市</option>');
+                        $.each(province[$(this).val()], function (i, v) {
+                            $("<option>").text(v).val(v).appendTo($("#city"));
+                        });
+                    });
+
+                    $("#city").change(function () {
+                        if ($(this).val() != "") {
+                            updata($(this).val());
+                        }
+                    });
+                });
+            });
+
+
+        });
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        .box {
+            width: 1000px;
+            margin: 50px auto;
+            height: 550px;
+            z-index: 0;
+        }
+
+        .header {
+            background: #91b83f;
+            width: 100%;
+            height: 100px;
+            position: relative;
+        }
+
+        table {
+            width: 100%;
+            height: 400px;
+            border: 1px dashed #cccccc;
+            text-align: center;
+            border-collapse: collapse;
+            font-size: 20px;
+
+        }
+
+        tr {
+            width: 100%;
+            height: 100px;
+            border: 1px solid #cccccc;
+        }
+
+        td {
+            height: 100px;
+        }
+
+        .cityname span {
+            font-size: 30px;
+            line-height: 100px;
+            padding-left: 50px;
+            float: left;
+        }
+
+        .citychoose {
+            width: 100%;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            line-height: 50px;
+            padding-left: 10px;
+            display: none;
+        }
+
+        .toggle {
+            float: left;
+            margin-top: 45px;
+            cursor: pointer;
+        }
+
+        select {
+            width: 150px;
+            height: 40px;
+            border-radius: 5px;
+        }
+
+        .title {
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 30px;
+        }
+
+        .lifeIndex {
+            width: 100%;
+            height: auto;
+            border: 1px solid #cccccc;
+            margin-bottom: 20px;
+        }
+
+        .lifeIndex li {
+            width: 100%;
+            height: 60px;
+            border: 1px solid #cccccc;
+        }
+
+        .lifeIndex li:nth-child(2n){
+            background: rgba(0,0,0,0.1);
+        }
+
+        .lifeIndex li div {
+            height: 60px;
+            line-height: 60px;
+            float: left;
+            text-align: center;
+        }
+
+        .nr {
+            width: 20%;
+        }
+
+        .zs {
+            width: 20%;
+            color: red;
+        }
+        .zs1 {
+            width: 20%;
+        }
+        .zs:first-child{
+            color: #000;
+        }
+
+        .lifeIndex li .sug {
+            width: 60%;
+            text-align: left;
+            padding: 10px 20px;
+            line-height: 20px;
+            color: blue;
+        }
+
+        .sug1 {
+            width: 60%;
+        }
+
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="header">
+        <div class="cityname">
+            <span>太原</span>
+            <div class="toggle">[切换]</div>
+        </div>
+    </div>
+    <div class="citychoose">
+        <select id="province">
+            <option value="">请选择省份</option>
+        </select>
+        <select id="city">
+            <option value="">请选择城市</option>
+        </select>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>时间</th>
+            <th>日期</th>
+            <th>天气</th>
+            <th>温度</th>
+            <th>风力</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div class="title">生活指数</div>
+    <ul class="lifeIndex">
+        <li>
+            <div class="nr"></div>
+            <div class="zs1">指数</div>
+            <div class="sug1">建议</div>
+        </li>
+        <li id="air">
+            <div class="nr">空气指数</div>
+            <div class="zs"></div>
+            <div class="sug"></div>
+        </li>
+        <li id="comf">
+            <div class="nr">舒适度指数</div>
+            <div class="zs"></div>
+            <div class="sug"></div>
+        </li>
+        <li id="cw">
+            <div class="nr">洗车指数</div>
+            <div class="zs"></div>
+            <div class="sug"></div>
+        </li>
+        <li id="drsg">
+            <div class="nr">穿衣指数</div>
+            <div class="zs"></div>
+            <div class="sug"></div>
+        </li>
+        <li id="flu">
+            <div class="nr">感冒指数</div>
+            <div class="zs"></div>
+            <div class="sug"></div>
+        </li>
+        <li id="sport">
+            <div class="nr">运动指数</div>
+            <div class="zs"></div>
+            <div class="sug"></div>
+        </li>
+        <li id="trav">
+            <div class="nr">旅游指数</div>
+            <div class="zs"></div>
+            <div class="sug"></div>
+        </li>
+        <li id="uv">
+            <div class="nr">紫外线指数</div>
+            <div class="zs"></div>
+            <div class="sug"></div>
+        </li>
+    </ul>
+
+</div>
+</body>
+</html>

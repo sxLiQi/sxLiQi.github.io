@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>扫雷</title>
+    <script src="jquery-1.12.4.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background: #cccccc;
+        }
+
+        .scene {
+            width: 500px;
+            height: 500px;
+            border-top: 1px solid #cccccc;
+            border-left: 1px solid #cccccc;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            user-select: none;
+            display: none;
+        }
+        .zhezhao{
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            left:0;
+            right:0;
+            z-index: 9;
+            display:none;
+        }
+
+        .block {
+            width: 49px;
+            height: 49px;
+            border-right: 1px solid #cccccc;
+            border-bottom: 1px solid #cccccc;
+            background: #2b2f3e;
+            background-size: cover;
+            float: left;
+        }
+
+        .lei {
+            background: #000000;
+        }
+
+        .control {
+            width: 200px;
+            height: 100%;
+            position: fixed;
+            right: 0;
+            top: 0;
+            user-select: none;
+            background: #2b2f3e;
+            color: #ffffff;
+            display: none;
+        }
+
+        .item {
+            width: 160px;
+            height: 40px;
+            display: block;
+            margin: 25px auto;
+            border-radius: 10px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            background: #051812;
+            position: relative;
+        }
+
+        .num {
+            background: white;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .show {
+            background: url("img/dilei.jpg") center center no-repeat;
+            background-size: 100%;
+        }
+
+        .flag {
+            background: url("img/hongqi.jpg") center center no-repeat;
+            background-size: 100%;
+        }
+
+        .mask {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .choose {
+            width: 500px;
+            height: 300px;
+            border-radius: 10px;
+            background: #8b8b8e;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+
+        }
+
+        .chooseItem {
+            width: 200px;
+            height: 60px;
+            background: #2b2f3e;
+            float: left;
+            margin: 120px 25px;
+            text-align: center;
+            line-height: 60px;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .paihang {
+            width: 400px;
+            height: 300px;
+            background: #8f8f8f;
+            border: 5px solid #051812;
+            border-radius: 20px;
+            position: absolute;
+            right: 160px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            text-align: center;
+            list-style: none;
+            padding: 0 30px;
+            display: none;
+
+        }
+
+        .paihang li {
+            width: 400px;
+            height: 70px;
+            border-bottom: 2px dashed #ffffff;
+            list-style: none;
+            line-height: 70px;
+        }
+
+        .paihang li .name {
+            width: 150px;
+            height: 70px;
+            float: left;
+        }
+
+        .paihang li .score {
+            width: 250px;
+            height: 70px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div class="scene">
+    <div class="zhezhao"></div>
+</div>
+<div class="control">
+    <time class="item">100</time>
+    <div class="flagnum item">flag:10</div>
+    <div class="item restart">重新开始</div>
+    <div class="item choosebtn">难度选择</div>
+    <div class="item paihangbtn">
+        排行榜
+        <ul class="paihang">
+            <li>
+                <div class="name">name</div>
+                <div class="score">score</div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="mask">
+    <div class="choose">
+        <div class="chooseItem easy">简单</div>
+        <div class="chooseItem diff">困难</div>
+    </div>
+</div>
+</body>
+<script>
+    var times = 100;
+    var to;
+    var num = 10;
+    var numEnd = 0
+    var bestScore = localStorage.bestScore ? JSON.parse(localStorage.bestScore) : [];
+
+    function creatLei() {
+        to = setInterval(timeMove, 1000);
+        do {
+            $(".scene").empty();
+            $(".scene").html('<div class="zhezhao"></div>');
+            for (var i = 0; i < 10; i++) {
+                for (var j = 0; j < 10; j++) {
+                    var isLei = Math.random() > (1 - num / 100);
+                    $("<div>").addClass(function () {
+                        if (isLei) {
+                            return "block lei";
+                        } else {
+                            return "block";
+                        }
+                    })
+                        .attr("id", i + "-" + j)
+                        .data({pos: {x: i, y: j}, flag: true})
+                        .mousedown(mousedownEvent)
+                        .appendTo(".scene");
+                }
+            }
+        } while ($(".lei").length != num)
+    }
+
+    function mousedownEvent(e) {
+        if (e.which == 1) {
+            leftClick.call(this);
+        }
+        if (e.which == 3) {
+            rightClick.call(this);
+        }
+    }
+
+    function leftClick() {
+        if ($(this).hasClass("flag")) {
+            return;
+        }
+        if ($(this).hasClass("lei")) {
+            $(".lei").addClass("show");
+            gameOver();
+        } else {
+            var pos = $(this).data("pos");
+            $(this).addClass("num");
+            var n = 0;
+            for (var i = pos.x - 1; i <= pos.x + 1; i++) {
+                for (var j = pos.y - 1; j <= pos.y + 1; j++) {
+                    if ($("#" + i + "-" + j).hasClass("lei")) {
+                        n++;
+                    }
+                }
+            }
+            $(this).html(n);
+            if (n == 0) {
+                for (var i = pos.x - 1; i <= pos.x + 1; i++) {
+                    for (var j = pos.y - 1; j <= pos.y + 1; j++) {
+                        var obj = $("#" + i + "-" + j);
+                        if (obj.length == 1 && !obj.hasClass("num")) {
+                            leftClick.call(obj[0]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    function rightClick() {
+        if ($(this).hasClass("num")) {
+            return;
+        }
+        if ($(this).hasClass("flag")) {
+            $(this).removeClass("flag");
+            num++;
+        }
+        else {
+            $(this).addClass("flag");
+            num--;
+            if (num < 0) {
+                num++;
+                $(this).removeClass("flag");
+            }
+            setTimeout(function () {
+                if (num == 0) {
+                    if ($(".flag").filter(".lei").length == numEnd) {
+                        alert("过关");
+                        clearInterval(to);
+                        $(".zhezhao").show();
+                        if (bestScore.length < 3 || (bestScore.length >= 3 && times > this.bestScore[2].scor)) {
+                            var player = prompt("请输入姓名");
+                            bestScore.push({player, scor: times});
+                            bestScore.sort(function (a, b) {
+                                if (a.scor >= b.scor) {
+                                    return -1;
+                                } else {
+                                    return 1;
+                                }
+                            });
+                            if (bestScore.length > 3) {
+                                bestScore.pop();
+                            }
+                            localStorage.bestScore = JSON.stringify(bestScore);
+                        }
+
+                    }
+                }
+            }, 100);
+        }
+        $(".flagnum").html("flag:" + num);
+    }
+
+    $(document).on("contextmenu", function (e) {
+        e.preventDefault();
+    });
+
+    function timeMove() {
+        times--;
+        if (times == 0) {
+            gameOver();
+        }
+        $("time").html(times);
+    }
+
+    //初始化
+    function init() {
+        clearInterval(to);
+        times = 100;
+        $("time").html(100);
+        num=numEnd;
+        $(".flagnum").html("flag:" + num);
+        creatLei();
+    }
+
+    function gameOver() {
+        $(".zhezhao").show();
+        setTimeout(function () {
+            alert("GAME OVER");
+            if (confirm("要重新开始吗")) {
+                init();
+            }
+        }, 300);
+    }
+
+    function startGame() {
+        $(".mask").hide();
+        $(".control").show();
+        $(".scene").show();
+        init();
+    }
+
+    function getScore() {
+        var str = '<li><div class="name">name</div><div class="score">score</div></li>';
+        bestScore = localStorage.bestScore ? JSON.parse(localStorage.bestScore) : [];
+        if (bestScore == undefined) {
+            return;
+        }
+        $.each(bestScore, function (i, v) {
+            str += '<li><div class="name">' + v.player + '</div><div class="score">' + v.scor + '</div></li>';
+
+        });
+        return str;
+    }
+
+    //重新开始
+    $(".restart").click(function () {
+        if (confirm("确定要重新开始吗")) {
+            init();
+        }
+    });
+
+
+    $(".easy").click(function () {
+        num = numEnd = 10;
+        startGame();
+    });
+
+    $(".diff").click(function () {
+        num = numEnd = 15;
+        startGame();
+    });
+
+    $(".choosebtn").click(function () {
+        clearInterval(to);
+        $(".mask").show();
+        $(".control").hide();
+        $(".scene").hide();
+    });
+
+    var flagPH = true
+    $(".paihangbtn").click(function () {
+        if (flagPH) {
+            $(".paihang").html(getScore()).show();
+        } else {
+            $(".paihang").hide();
+        }
+        flagPH = !flagPH;
+    });
+</script>
+</html>

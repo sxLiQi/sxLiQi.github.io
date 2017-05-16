@@ -1,0 +1,483 @@
+﻿/* 头部 */
+
+header {
+	height: 100%;
+}
+
+.header {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.swiper-container,
+.swiper-wrapper,
+.swiper-slide {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+
+.side1 {
+	background-image: url(../img/thumb1.jpg);
+}
+
+.side2 {
+	background-image: url(../img/thumb2.jpg);
+}
+
+.side3 {
+	background-image: url(../img/thumb3.jpg);
+}
+
+header .zhezhao {
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0.8;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 999;
+}
+
+header .zhezhao .name {
+	color: white;
+	text-align: center;
+	font-size: 60px;
+	padding-top: 200px;
+}
+
+header .contact-logo {
+	height: 30px;
+	width: 100%;
+	text-align: center;
+	line-height: 30px;
+	color: white;
+	margin-top: 20px;
+}
+
+header .contact-logo i {
+	padding: 0 10px;
+}
+
+header .contact-logo a {
+	color: white;
+}
+
+header .contact-logo a:hover {
+	opacity: 0.8;
+}
+
+.downbtn {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 20px;
+	margin: auto;
+	background: url(../img/down.png) center center no-repeat;
+	background-size: 100%;
+	cursor: pointer;
+}
+
+
+/* 导航 */
+
+nav {
+	box-shadow: 0px 6px 13px -2px rgba(0, 0, 0, 0.2);
+}
+
+.nav-max,
+.nav-min {
+	margin-top: 30px;
+	height: 80px;
+	color: #000;
+	line-height: 80px;
+}
+
+.nav-max a:hover {
+	opacity: 0.8;
+}
+
+header nav .name {
+	font-size: 30px;
+	float: left;
+}
+
+header nav .lianjie {
+	float: right;
+	font-size: 14px;
+}
+
+
+/* 关于 */
+
+.about {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+.title {
+	font-size: 20px;
+	padding: 5px;
+	border-left: 5px solid;
+	line-height: 20px;
+	margin: 5px;
+}
+
+.production-title {
+	font-size: 20px;
+	padding: 5px;
+	line-height: 40px;
+	text-align: center;
+}
+
+.title-des {
+	text-align: center;
+	color: #888888;
+	font-size: 16px;
+	line-height: 20px;
+	margin: 10px 0;
+}
+
+.about .photo {
+	height: 500px;
+	/*background: pink;*/
+	background-image: url('../img/avator.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	margin-bottom: 10px;
+}
+
+.introduction {
+	color: #888888;
+	font-size: 16px;
+}
+
+.skill {
+	margin-top: 20px;
+	font-size: 18px;
+}
+
+.progress-bar {
+	width: 100%;
+	height: 12px;
+	background: #d6d6d6;
+	border-radius: 10px;
+	margin-top: 12px;
+}
+
+.progress-value {
+	height: 12px;
+	background: #222222;
+	border-radius: 10px;
+	position: relative;
+}
+
+.progress-value span {
+	position: absolute;
+	right: 0;
+	top: -18px;
+	font-size: 12px;
+}
+
+
+/* 作品 */
+
+.production {
+	overflow: hidden;
+	min-width: 400px;
+	margin-bottom: 40px;
+}
+
+.bigbox {
+	width: 100%;
+	overflow: hidden;
+}
+
+.production1 {
+	height: 300px;
+	position: relative;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	padding: 0;
+}
+
+.production1:nth-child(1) {
+	background-image: url('../img/dzyx.jpg');
+}
+
+.production1:nth-child(2) {
+	background-image: url('../img/canvas.jpg');
+}
+
+.production1:nth-child(3) {
+	background-image: url('../img/saolei.jpg');
+}
+
+.production1:nth-child(4) {
+	background-image: url('../img/jsb.jpg');
+}
+
+.production1:nth-child(5) {
+	background-image: url('../img/tq.jpg');
+}
+
+.production1:nth-child(6) {
+	background-image: url('../img/gengduo.jpg');
+}
+
+
+.production1 .zhezhao {
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0;
+	position: relative;
+}
+
+@keyframes touming {
+	0% {
+		opacity: 0;
+	}
+	10% {
+		opacity: 0.1;
+	}
+	20% {
+		opacity: 0.2;
+	}
+	30% {
+		opacity: 0.3;
+	}
+	40% {
+		opacity: 0.4;
+	}
+	50% {
+		opacity: 0.5;
+	}
+	60% {
+		opacity: 0.6;
+	}
+	70% {
+		opacity: 0.7;
+	}
+	80% {
+		opacity: 0.8;
+	}
+	90% {
+		opacity: 0.8;
+	}
+	100% {
+		opacity: 0.8;
+	}
+}
+
+.production1:hover .zhezhao {
+	animation: touming 0.5s linear forwards;
+}
+
+.sousuo {
+	width: 50px;
+	height: 50px;
+	background: #fff;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	opacity: 0;
+	font-size: 30px;
+	line-height: 50px;
+	text-align: center;
+	border-radius: 10px;
+}
+
+.production1:hover .sousuo {
+	animation: touming 0.5s linear forwards;
+}
+
+.more {
+	width: 100px;
+	height: 40px;
+	border-radius: 20px;
+	border: 2px solid;
+	line-height: 40px;
+	text-align: center;
+	font-size: 14px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+.more:hover {
+	color: white;
+	background: black;
+}
+
+.production2 {
+	position: relative;
+	padding: 0 15px;
+	height: 300px;
+	margin-bottom: 25px;
+}
+
+.production2-main {
+	width: 100%;
+	height: 100%;
+	box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.2);
+	position: relative;
+}
+
+.production2-main-pic {
+	width: 100%;
+	height: 300px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	padding: 0;
+}
+
+.p1 {
+	background-image: url('../img/fanke.jpg');
+}
+
+.p2 {
+	background-image: url('../img/xiaomi.jpg');
+}
+
+.p3 {
+	background-image: url('../img/apple.jpg');
+}
+
+.p4 {
+	background-image: url('../img/tianmao.jpg');
+}
+
+.p5 {
+	background-image: url('../img/jingdong.png');
+}
+
+.p6 {
+	background-image: url('../img/gengduo.jpg');
+}
+.p7 {
+	background-image: url('../img/zgyd.jpg');
+}
+.p8 {
+	background-image: url('../img/sfw.png');
+}
+.p9 {
+	background-image: url('../img/food.jpg');
+}
+
+.production2-main h3 {
+	text-align: center;
+	line-height: 300px;
+	color: white;
+}
+
+.production2-main p {
+	margin: 0 0 8px 20px;
+	color: #888888;
+	font-size: 16px;
+	white-space: nowrap;
+	line-height: 20px;
+	height: 40px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding-right: 15px;
+}
+
+.production2-main .zhezhao {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: #000;
+	opacity: 0;
+}
+
+.production2-main:hover .zhezhao {
+	animation: touming 0.5s linear forwards;
+}
+
+.contact {
+	overflow: hidden;
+}
+
+.contact-left {
+	height: 300px;
+	box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.2);
+	margin-bottom: 20px;
+}
+
+.contact-left1 {
+	width: 100%;
+	height: 80px;
+	padding: 10px 10px;
+	margin-bottom: 20px;
+}
+
+.contact-left-logo {
+	font-size: 30px;
+}
+
+.contact-left-name {
+	font-size: 12px;
+}
+
+.contact-left-content {
+	font-size: 16px;
+	color: #888888;
+}
+
+.contact-left {
+	margin-bottom: 20px;
+}
+
+.input-content {
+	box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.2);
+	height: 60px;
+	width: 100%;
+	padding: 10px 10px;
+	border: 0;
+	margin-bottom: 30px;
+	outline: medium;
+}
+
+.message {
+	width: 85%;
+	height: 120px;
+	resize: none;
+	padding: 10px 10px;
+	border: 0;
+	margin-bottom: 30px;
+	float: left;
+}
+
+.btnSend {
+	width: 15%;
+	height: 120px;
+	border: 0;
+	outline: medium;
+	color: white;
+	background: black;
+}
+
+footer {
+	width: 100%;
+	height: 100px;
+	background: black;
+}
