@@ -320,6 +320,9 @@ footer a:hover {
 	.banner-img {
 		background-image: url('../img/macbookpro_middle.jpg');
 	}
+	.banner-img1 {
+		background-image: url('../img/iphone_alt_medium.jpg');
+	}
 	.picture ul li {
 		width: 50%;
 	}
@@ -335,6 +338,7 @@ footer a:hover {
 	.picture4 {
 		background-image: url('../img/iphone_upgrade_medium.jpg');
 	}
+	
 }
 
 
@@ -392,6 +396,9 @@ footer a:hover {
 	}
 	.banner-img {
 		background-image: url('../img/macbookpro-small.jpg');
+	}
+	.banner-img1 {
+		background-image: url('../img/iphone_alt_small.jpg');
 	}
 	.fuwu-max {
 		display: none;
