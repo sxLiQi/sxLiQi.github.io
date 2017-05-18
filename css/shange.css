@@ -32,6 +32,10 @@
 /* 最小屏 <768 */
 
 @media screen and (max-width: 768px) {
+	[class*='col-'] {
+		float: left;
+		padding: 0;
+	}
 	.container {
 		width: auto;
 	}
