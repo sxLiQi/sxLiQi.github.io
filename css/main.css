@@ -36,15 +36,10 @@ header {
 	background-image: url(../img/3.jpg);
 }
 
-.side4 {
-	background-image: url(../img/4.jpg);
-}
-
 header .zhezhao {
 	width: 100%;
 	height: 100%;
-	background: #000;
-	opacity: 0.8;
+	background: rgba(0,0,0,0.6);
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -127,15 +122,16 @@ header nav .lianjie {
 .about {
 	margin-top: 20px;
 	margin-bottom: 20px;
-	overflow: hidden;
+	overflow: hidden;	
 }
 
 .title {
 	font-size: 20px;
 	padding: 5px;
-	border-left: 5px solid;
+	border-left: 5px solid rgba(255,255,255,0.8);
 	line-height: 20px;
 	margin: 5px;
+	color: rgba(255,255,255,0.8);
 }
 
 .production-title {
@@ -421,6 +417,7 @@ header nav .lianjie {
 
 .contact {
 	overflow: hidden;
+	z-index: 10;
 }
 
 .contact-left {
@@ -451,6 +448,7 @@ header nav .lianjie {
 
 .contact-left {
 	margin-bottom: 20px;
+	background: white;
 }
 
 .input-content {
@@ -509,4 +507,39 @@ footer {
 	color: white;
 	font-size: 25px;
 	margin-top: 20px;
+}
+.section{
+	background-size: cover;
+	background-position: center center;
+	background-repeat:no-repeat ;
+}
+
+.section:nth-child(2){
+	background-image: url(../img/skill.jpg);
+}
+.section:nth-child(4){
+	background-image: url(../img/4.jpg);
+}
+.section:nth-child(3){
+	background-image: url(../img/home.jpg);
+}
+.section:nth-child(3):after{
+	background: url(../img/15.png);
+}
+.section:nth-child(5){
+	background-image: url(../img/hire.jpg);
+}
+.section:after{
+	position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    background-color: #000000;
+    opacity: 0.6;
+    width: 100%;
+    height: 100%;
+}
+.container{
+	z-index: 999;
+	position: relative;
 }
