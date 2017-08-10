@@ -1,0 +1,338 @@
+html, body, form, input, textarea, h1, h3, h4, p, ul, ol, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+* {
+    color: #000000;
+    font-size: 16px;
+}
+
+img {
+    border: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #ffffff;
+}
+
+.left {
+    width: 300px;
+    height: 100%;
+    background: #3a3a3a;
+}
+
+.left > .header {
+    width: 300px;
+    height: 44px;
+    line-height: 44px;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 0 10px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #3a3a3a;
+    box-sizing: border-box;
+}
+
+.left > .header > .logo {
+    font-size: 18px;
+    color: #ffffff;
+    float: left;
+}
+
+.left > .header > .add {
+    float: right;
+    width: 30px;
+    height: 100%;
+    font-size: 20px;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    user-select: none;
+}
+
+.left > .header > .add > span {
+    display: block;
+    width: 25px;
+    height: 1px;
+    background: #ffffff;
+}
+
+.left > .leftList {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 44px;
+    box-sizing: border-box;
+}
+
+.left > .leftList > li {
+    height: 44px;
+    border-bottom: 1px solid #1a1a1a;
+    padding: 0 10px;
+    line-height: 44px;
+    color: #ffffff;
+}
+
+.left > .leftList > li > p {
+    color: #ffffff;
+}
+
+.left > .leftList > li.active {
+    background: #1a1a1a;
+
+}
+
+.left > .leftList > li > .point {
+    float: left;
+    width: 44px;
+    height: 44px;
+}
+
+.left > .leftList > li > .point > span {
+    display: block;
+    width: 25px;
+    height: 25px;
+    background: red;
+    margin-top: 10px;
+    border-radius: 50%;
+}
+
+.right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: 300px;
+    bottom: 0;
+    overflow-x: hidden;overflow-y: auto;
+}
+
+.right > .search {
+    height: 44px;
+    border-bottom: 1px solid;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.right > .search > input {
+    border: none;
+    outline: none;
+    background: none;
+    width: 300px;
+    height: 100%;
+    font-size: 18px;
+}
+
+.right > .search > input:focus {
+    background: #ffffff;
+    border-right: 1px solid #cccccc;
+}
+
+.right .rightBottom {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.right > .rightBottom > .title {
+    height: 50px;
+    font-size: 20px;
+    color: red;
+    font-weight: bold;
+}
+
+.right > .rightBottom > .doneNum {
+    height: 44px;
+    border-bottom: 1px solid #cccccc;
+    line-height: 44px;
+    position: relative;
+}
+
+.right > .rightBottom > .doneNum > .sj {
+    width: 44px;
+    height: 44px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.right > .rightBottom > .doneNum > .sj.isShow {
+    transform: translateY(15px) rotate(90deg);
+}
+
+.right > .rightBottom > .doneNum > .sj > span {
+    display: block;
+    border: 14px solid #cccccc;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-right: none;
+    margin-top: 8px;
+}
+
+.right > .rightBottom > .doneNum > .setting {
+    float: right;
+    margin-right: 20px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.right > .rightBottom > .doneNum > .tips {
+    width: 360px;
+    height: 260px;
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 5px;
+    position: absolute;
+    border: 1px solid;
+    right: 65px;
+    top: -95px;
+    z-index: 10;
+}
+
+.right > .rightBottom > .doneNum > .tips > .inner {
+    width: 100%;
+    height: 100%;
+}
+
+.right > .rightBottom > .doneNum > .tips > .inner>input{
+    width: 100%;
+    height: 44px;
+    border: none;
+    outline: none;
+}
+.right > .rightBottom > .doneNum > .tips > .inner>input:focus{
+    outline: solid;
+}
+.right > .rightBottom > .doneNum > .tips > .inner>.colorList{
+    overflow: hidden;margin-bottom: 30px;
+}
+.right > .rightBottom > .doneNum > .tips > .inner>.colorList>li{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 5px;
+    float: left;
+    background-color: red;
+
+}
+.right > .rightBottom > .doneNum > .tips > .inner>.colorList>li.active{
+    padding: 3px;
+    background-clip: content-box;
+    border: 2px solid red;
+    box-sizing: border-box;
+}
+.right > .rightBottom > .doneNum > .tips > .inner button{
+    padding: 5px 10px;
+    margin: 5px;
+    background: #3a3a3a;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    float: left;
+}
+.btnGroup{
+    float: right;
+}
+.right > .rightBottom li {
+    position: relative;
+}
+
+.btn {
+    width: 80px;
+    height: 36px;
+    background: #f12528;
+    position: absolute;
+    right: 20px;
+    top: 4px;
+    text-align: center;
+    line-height: 36px;
+    color: #ffffff;
+    border-radius: 10px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.right > .rightBottom > .done {
+    padding-left: 30px;
+    height: auto;
+}
+
+.right > .rightBottom > .done > li {
+    height: 44px;
+    line-height: 44px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.right > .rightBottom > .done > li > .point {
+    width: 44px;
+    height: 44px;
+    float: left;
+}
+
+.right > .rightBottom > .done > li > .point > span {
+    display: block;
+    margin-top: 10px;
+    width: 25px;
+    height: 25px;
+    background: red;
+    border-radius: 50%;
+}
+
+.right > .rightBottom > .doing {
+    margin-top: 40px;
+    height: auto;
+    padding-left: 30px;
+}
+
+.right > .rightBottom > .doing > li {
+    height: 44px;
+    line-height: 44px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.right > .rightBottom > .doing > li > .point {
+    width: 44px;
+    height: 44px;
+    float: left;
+}
+
+.right > .rightBottom > .doing > li > .point > span {
+    display: block;
+    margin-top: 10px;
+    width: 18px;
+    height: 18px;
+    padding: 3px;
+    background-clip: content-box;
+    background-color: red;
+    border-radius: 50%;
+    border: 1px solid red;
+}
+
+.right > .rightBottom > .doing > li input {
+    height: 100%;
+    width: 80%;
+    border: none;
+    outline: none;
+}
+
+.right > .rightBottom > .additem {
+    width: 300px;
+    height: 44px;
+    background: #3a3a3a;
+    color: #ffffff;
+    text-align: center;
+    line-height: 44px;
+    border-radius: 10px;
+    margin: 10px auto;
+    user-select: none;
+    cursor: pointer;
+}
+

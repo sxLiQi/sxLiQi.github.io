@@ -1,0 +1,15 @@
+<div class="panel panel-{{data.color}}" style="width: 230px;position: absolute;left: {{data.position.left}}px;top:{{data.position.top}}px;">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            {{data.title}}
+            <span class="glyphicon glyphicon-remove pull-right remove" ng-click="myFn()"></span>
+        </h3>
+    </div>
+
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <a href="#" ng-repeat="v in ['default','primary','success','info','warning','danger']" class="btn btn-{{v}}" ng-model="data.color" ng-click="data.color=v"></a>
+    </div>
+    <div class="panel-body" style="padding: 0;margin: 0">
+        <textarea style="min-height: 260px;width: 100%;border: none;outline: none;resize: none" ng-model="data.content"></textarea>
+    </div>
+</div>

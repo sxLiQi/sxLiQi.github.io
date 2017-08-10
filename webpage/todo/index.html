@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" ng-app="todo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/angular.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body ng-controller="todoCtrl">
+<div class="left">
+    <div class="header">
+        <div class="logo">ToDolist</div>
+        <div class="add" ng-click="addList()">+</div>
+    </div>
+    <ul class="leftList">
+        <li ng-repeat="v in todos" ng-class="index==$index?'active':''" ng-click="selectIndex($index)">
+            <div class="point">
+                <span ng-style="{background:v.color}"></span>
+            </div>
+            <p>{{v.title}}</p>
+        </li>
+    </ul>
+</div>
+<div class="right">
+    <div class="search"><input type="text" placeholder="请输入关键字" ng-model="search"></div>
+    <section class="rightBottom">
+        <div class="title" ng-style="{color:todos[index].color}">
+            {{todos[index].title}}
+        </div>
+
+        <div class="doneNum">
+            <div class="sj" ng-class="{isShow:doneShow}" ng-click="doneToggle()">
+                <span></span>
+            </div>
+            已经完成{{doneNum()}}项
+
+            <div class="setting" ng-click="setToggle()" ng-style="{color:todos[index].color}">设置</div>
+            <div class="tips" ng-show="setShow">
+                <div class="inner">
+                    <input type="text" ng-model="changeTitle" ng-style="{color:changeColor}">
+                    <h3>颜色</h3>
+                    <ul class="colorList">
+                        <li ng-repeat="v in colorArr" ng-style="{backgroundColor:v,borderColor:v}" ng-class="{active:v==changeColor?true:false}" ng-click="changeSet(v)"></li>
+                    </ul>
+                    <button ng-click="delList(index)">删除</button>
+                    <div class="btnGroup">
+                        <button ng-click="cancel()">取消</button>
+                        <button ng-click="sure()">确定</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <ul class="done" ng-show="doneShow">
+            <li ng-repeat="v in todos[index].todoList |filter:search |filter:true">
+                <div class="point">
+                    <span ng-style="{background:todos[index].color}" ng-click="changeStatus(v)"></span>
+                </div>
+                <p>{{v.title}}</p>
+            </li>
+        </ul>
+        <ul class="doing">
+            <li ng-repeat="v in todos[index].todoList |filter:search |filter:false">
+                <div class="point">
+                    <span ng-style="{backgroundColor:todos[index].color,borderColor:todos[index].color}"
+                          ng-click="changeStatus(v)"></span>
+                </div>
+                <p>
+                    <input type="text" ng-model="v.title">
+                </p>
+            </li>
+
+        </ul>
+        <div class="additem" ng-click="addNewTodoList()">
+            添加新项
+        </div>
+
+    </section>
+</div>
+</body>
+</html>
