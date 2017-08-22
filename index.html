@@ -10,14 +10,9 @@
 		<link rel="stylesheet" href="css/main.css">
 		<link rel="stylesheet" href="css/swiper-3.4.2.min.css" />
 		<link rel="stylesheet" href="css/jquery.fullPage.css" />
-		<link rel="stylesheet" href="css/fsbanner.css" />
 		<script src="js/jquery-1.12.4.min.js"></script>
 		<script type="text/javascript" src="js/swiper-3.4.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
-		<script type="text/javascript" src="js/fsbanner.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/owl.carousel.css" />
-		<link rel="stylesheet" type="text/css" href="css/owl.theme.css" />
-		<script type="text/javascript" src="js/owl.carousel.js"></script>
 		<script type="text/javascript" src="js/echarts.min.js"></script>
 	</head>
 
@@ -30,18 +25,15 @@
 						<div class="swiper-container">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide side1"></div>
-								<div class="swiper-slide side2"></div>
-								<div class="swiper-slide side3"></div>
 							</div>
 						</div>
 						<div class="zhezhao">
 							<div class="infomation">
+								<div class="mphoto"></div>
 								<div class="name">李琦/LIQI</div>
 								<div class="contact-logo">
 									<a href="tencent://message/?uin=643205154&Site=&Menu=yes"><i class="iconfont icon-QQ"></i></a>
-									<a href="#"><i class="iconfont icon-weixin"></i></a>
-									<a href="#"><i class="iconfont icon-xinlang"></i></a>
-									<a href="#"><i class="iconfont icon-dianhua"></i></a>
+									<a href="tel:1803419056"><i class="iconfont icon-dianhua"></i></a>
 									<a href="#"><i class="iconfont icon-youxiang"></i></a>
 								</div>
 								<div class="zym">If you would have a thing well done,do it yourself.</div>
@@ -64,148 +56,250 @@
 				</div>
 			</div>
 			<div class="section">
-				
-					<div class="container production" id="production">
-						<div class="title"><b>Web Page</b></div>
-						<div style="margin-bottom: 50px;"></div>
-						<div id="owl-example" class="owl-carousel">
-							<div class="production2 col-xs-12 col-sm-6 col-md-4">
-								<a href="webpage/fanke/index.html" target="_blank">
-									<div class="production2-main">
-										<div class="production2-main-pic p1"></div>
-										<div class="zhezhao">
-											<h3>凡客</h3></div>
+
+				<div class="container production" id="production">
+					<div class="title"><b>My Project</b></div>
+					<div style="margin-bottom: 50px;"></div>
+					<style>
+						.swiper-container1 {
+							width: 100%;
+							padding-top: 50px;
+							padding-bottom: 50px;
+						}
+						
+						.swiper-container1 .swiper-slide {
+							background-position: center;
+							background-size: cover;
+							width: 300px;
+							height: 300px;
+						}
+						
+						.swiper-container1 .swiper-slide .link {
+							display: block;
+							width: 100%;
+							height: 100%;
+						}
+						.swiper-container1 .swiper-slide .link .mask{
+							width: 100%;
+							height: 100%;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							background-color:rgba(0,0,0,0.8) ;
+							color: #FFFFFF;
+							opacity: 0;
+						}
+						.swiper-container1 .swiper-slide .link:hover .mask{
+							opacity: 1;
+							transition: all 0.3s linear;
+						}
+					</style>
+					<div class="swiper-container swiper-container1">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide" style="background-image:url(img/food.jpg)">
+								<a href="webpage/food/index.html" class="link" target="_blank">
+									<div class="mask">
+										<h2>美食网站</h2>
 									</div>
 								</a>
 							</div>
-							<div class="production2 col-xs-12 col-sm-6 col-md-4">
-								<a href="webpage/xiaomi/index.html" target="_blank">
-									<div class="production2-main">
-										<div class="production2-main-pic p2"></div>
-										<div class="zhezhao">
-											<h3>小米</h3></div>
+							<div class="swiper-slide" style="background-image:url(img/bolg.jpg)">
+								<a href="http://liqinews.duapp.com" class="link" target="_blank">
+									<div class="mask">
+										<h2>个人博客</h2>
 									</div>
 								</a>
 							</div>
-							<div class="production2 col-xs-12 col-sm-6 col-md-4">
-								<a href="webpage/apple/index.html" target="_blank">
-									<div class="production2-main">
-										<div class="production2-main-pic p3"></div>
-										<div class="zhezhao">
-											<h3>苹果</h3></div>
+							<div class="swiper-slide" style="background-image:url(img/1.jpg)">
+								<a href="http://liqiwork.duapp.com" class="link" target="_blank">
+									<div class="mask">
+										<h2>e-Work</h2>
 									</div>
 								</a>
 							</div>
-							<div class="production2 col-xs-12 col-sm-6 col-md-4">
-								<a href="webpage/tianmao/index.html" target="_blank">
-									<div class="production2-main">
-										<div class="production2-main-pic p4"></div>
-										<div class="zhezhao">
-											<h3>天猫</h3></div>
+							<div class="swiper-slide" style="background-image:url(img/1.jpg)">
+								<a href="http://lqsport.duapp.com" class="link" target="_blank">
+									<div class="mask">
+										<h2>校跑圈</h2>
 									</div>
 								</a>
 							</div>
-							<div class="production2 col-xs-12 col-sm-6 col-md-4">
-								<a href="webpage/JD/index.html" target="_blank">
-									<div class="production2-main">
-										<div class="production2-main-pic p5"></div>
-										<div class="zhezhao">
-											<h3>京东</h3></div>
-									</div>
-								</a>
-							</div>
-							<div class="production2 col-xs-12 col-sm-6 col-md-4">
-								<a href="webpage/ChinaMoblie/index.html" target="_blank">
-									<div class="production2-main">
-										<div class="production2-main-pic p7"></div>
-										<div class="zhezhao">
-											<h3>中国移动</h3></div>
-									</div>
-								</a>
-							</div>
-							<div class="production2 col-xs-12 col-sm-6 col-md-4">
-								<a href="webpage/sofa/index.html" target="_blank">
-									<div class="production2-main">
-										<div class="production2-main-pic p8"></div>
-										<div class="zhezhao">
-											<h3>沙发网</h3></div>
-									</div>
-								</a>
-							</div>
-							<div class="production2 col-xs-12 col-sm-6 col-md-4">
-								<a href="webpage/food/index.html" target="_blank">
-									<div class="production2-main">
-										<div class="production2-main-pic p9"></div>
-										<div class="zhezhao">
-											<h3>美食</h3></div>
+							<div class="swiper-slide" style="background-image:url(img/1.jpg)">
+								<a href="webpage/LOVE_TRAVEL/index.html" class="link" target="_blank">
+									<div class="mask">
+										<h2>Love Travel</h2>
 									</div>
 								</a>
 							</div>
 						</div>
+						<!-- Add Pagination -->
+						<div class="swiper-pagination"></div>
 					</div>
-				
+
+				</div>
+
 			</div>
 			<div class="section">
-				
-					<div class="container production" id="production">
-						<div class="title"><b>Other</b></div>
-						<div style="margin-bottom: 50px;"></div>
-						<div class="fsbanner" id="demo-3">
-							<div style="background-image:url(img/a1.jpg)"> <span class="name">打字游戏</span>
-								<a href="webpage/TypingGame/index.html" target="_blank" class="otherhref"></a>
+
+				<div class="container production" id="production">
+					<div class="title"><b>Other</b></div>
+					<div style="margin-bottom: 50px;"></div>
+					<style>
+						.swiper-container2 {
+							width: 100%;
+							height: auto;
+							margin-left: auto;
+							margin-right: auto;
+						}
+						
+						.swiper-container2 .swiper-slide {
+							text-align: center;
+							font-size: 18px;
+							background: #fff;
+							height: 200px;
+							/* Center slide text vertically */
+							display: -webkit-box;
+							display: -ms-flexbox;
+							display: -webkit-flex;
+							display: flex;
+							-webkit-box-pack: center;
+							-ms-flex-pack: center;
+							-webkit-justify-content: center;
+							justify-content: center;
+							-webkit-box-align: center;
+							-ms-flex-align: center;
+							-webkit-align-items: center;
+							align-items: center;
+						}
+						
+						.swiper-container2 .swiper-slide a {
+							display: block;
+							width: 100%;
+							height: 100%;
+							background-position: center;
+							background-repeat: no-repeat;
+							background-size: cover;
+						}
+						.swiper-container2 .swiper-slide a .mask{
+							width: 100%;
+							height: 100%;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							background-color:rgba(0,0,0,0.8) ;
+							color: #FFFFFF;
+							opacity: 0;
+						}
+						.swiper-container2 .swiper-slide a:hover .mask{
+							opacity: 1;
+							transition: all 0.3s linear;
+						}
+					</style>
+					<div class="swiper-container2">
+						<div class="swiper-wrapper swiper-wrapper">
+							<div class="swiper-slide">
+								<a href="webpage/TypingGame/index.html" style="background-image: url(img/a1.jpg);" target="_blank">
+									<div class="mask">打字游戏</div>
+								</a>
 							</div>
-							<div style="background-image:url(img/a2.jpg)"> <span class="name">扫雷</span>
-								<a href="webpage/saolei/index.html" target="_blank" class="otherhref"></a>
+							<div class="swiper-slide">
+								<a href="webpage/paint/index.html" style="background-image: url(img/canvas.jpg);" target="_blank">
+									<div class="mask">画板</div>
+								</a>
 							</div>
-							<div style="background-image:url(img/a3.jpg)"> <span class="name">画板</span>
-								<a href="webpage/paint/index.html" target="_blank" class="otherhref"></a>
+							
+							<div class="swiper-slide">
+								<a href="webpage/todo/index.html" style="background-image: url(img/a4.jpg);" target="_blank">
+									<div class="mask">记事本</div>
+								</a>
 							</div>
-							<div style="background-image:url(img/a4.jpg)"> <span class="name">to_do_list</span>
-								<a href="webpage/to_do_list.html" target="_blank" class="otherhref"></a>
+							<div class="swiper-slide">
+								<a href="webpage/saolei/index.html" style="background-image: url(img/a2.jpg);" target="_blank">
+									<div class="mask">扫雷游戏</div>
+								</a>
 							</div>
+							<div class="swiper-slide">
+								<a href="webpage/note/index.html" style="background-image: url(img/timg.jpg);" target="_blank">
+									<div class="mask">便签</div>
+								</a>
+							</div>
+
+							<div class="swiper-slide">
+								<a href="webpage/video_room/index.html" style="background-image: url(img/room.jpg);" target="_blank">
+									<div class="mask">3D房间</div>
+								</a>
+							</div>
+							<div class="swiper-slide">
+								<a href="webpage/weather/weather.html" style="background-image: url(img/tq.jpg);" target="_blank">
+									<div class="mask">天气预报</div>
+								</a>
+							</div>
+
 						</div>
+						<!-- Add Pagination -->
+						<div class="swiper-pagination"></div>
 					</div>
-				
+
+				</div>
+
 			</div>
 			<div class="section">
-				
-					<!--联系开始-->
-					<div class="contact container" id="contact">
-						<div class="title"><b>Contact</b></div>
-						<div class="title-des">&nbsp;</div>
-						<div class="contact-left col-lg-4 col-sm-4 col-xs-12">
-							<div class="contact-left1">
-								<p class="contact-left-logo iconfont icon-dianhua"></p>
-								<p class="contact-left-name"><b>PHONE</b></p>
-								<p class="contact-left-content">15735166698</p>
-							</div>
-							<div class="contact-left1">
-								<p class="contact-left-logo iconfont icon-youxiang"></p>
-								<p class="contact-left-name"><b>EAMIL</b></p>
-								<p class="contact-left-content">643205154@QQ.COM</p>
-							</div>
-							<div class="contact-left1">
-								<p class="contact-left-logo iconfont icon-dizhi"></p>
-								<p class="contact-left-name"><b>ADDRESS</b></p>
-								<p class="contact-left-content">123465</p>
-							</div>
+
+				<!--联系开始-->
+				<div class="contact container" id="contact">
+					<div class="title"><b>Contact</b></div>
+					<div class="title-des">&nbsp;</div>
+					<div class="contact-left col-lg-4 col-sm-4 col-xs-12">
+						<div class="contact-left1">
+							<p class="contact-left-logo iconfont icon-dianhua"></p>
+							<p class="contact-left-name"><b>PHONE</b></p>
+							<p class="contact-left-content">15735166698</p>
 						</div>
-						<div class="contact-right col-lg-8 col-sm-8 col-xs-12">
-							<form action=""> <input type="text" placeholder="请输入电话" class="input-content" /> <input type="text" placeholder="请输入姓名" class="input-content" />
-								<div style="box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.2);"> <textarea name="" rows="" cols="" placeholder="请输入信息" class="message"></textarea> <button class="btnSend"> <i class="iconfont icon-iconfontfasong" style="font-size: 40px;"></i> </button> </div>
-							</form>
+						<div class="contact-left1">
+							<p class="contact-left-logo iconfont icon-youxiang"></p>
+							<p class="contact-left-name"><b>EAMIL</b></p>
+							<p class="contact-left-content">643205154@QQ.COM</p>
+						</div>
+						<div class="contact-left1">
+							<p class="contact-left-logo iconfont icon-dizhi"></p>
+							<p class="contact-left-name"><b>ADDRESS</b></p>
+							<p class="contact-left-content">山西 太原</p>
 						</div>
 					</div>
-					<!--联系结束-->
-				
+					<div class="contact-right col-lg-8 col-sm-8 col-xs-12">
+						<form action=""> <input type="text" placeholder="请输入电话" class="input-content" /> <input type="text" placeholder="请输入姓名" class="input-content" />
+							<div style="box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.2);"> <textarea name="" rows="" cols="" placeholder="请输入信息" class="message"></textarea> <button class="btnSend"> <i class="iconfont icon-iconfontfasong" style="font-size: 40px;"></i> </button> </div>
+						</form>
+					</div>
+				</div>
+				<!--联系结束-->
+
 			</div>
 		</div>
 		<!-- 头部开始 -->
 		</div>
 	</body>
 	<script>
-		var mySwiper = new Swiper('.swiper-container', {
-			autoplay: 5000, //可选选项，自动滑动 
+		var swiper = new Swiper('.swiper-container1', {
+			pagination: '.swiper-pagination',
+			effect: 'coverflow',
+			grabCursor: true,
+			centeredSlides: true,
+			slidesPerView: 'auto',
+			coverflow: {
+				rotate: 50,
+				stretch: 0,
+				depth: 100,
+				modifier: 1,
+				slideShadows: true
+			}
+		});
+		var swiper = new Swiper('.swiper-container2', {
+			pagination: '.swiper-pagination',
+			slidesPerView: 3,
+			slidesPerColumn: 2,
+			paginationClickable: true,
+			spaceBetween: 30
 		});
 		$(document).ready(function() {
 			$('#fullpage').fullpage({
@@ -222,17 +316,6 @@
 		});
 		$(".downbtn").click(function() {
 			$.fn.fullpage.moveSectionDown();
-		});
-		$('#demo-3').fsBanner({
-			'trigger': 'mouse'
-		});
-		$("#owl-example").owlCarousel({
-			autoPlay: 3000,
-			items: 3,
-			itemsDesktop: [1119, 3],
-			itemsDesktopSmall: [992, 2],
-			itemsTablet: [768, 1],
-			stopOnHover: true
 		});
 		var machart = echarts.init(document.querySelector(".ldt"));
 		options = {

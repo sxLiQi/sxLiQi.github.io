@@ -50,7 +50,7 @@ header .zhezhao .name {
 	color: white;
 	text-align: center;
 	font-size: 60px;
-	padding-top: 200px;
+	padding-top: 20px;
 }
 
 header .contact-logo {
@@ -542,4 +542,13 @@ footer {
 .container{
 	z-index: 999;
 	position: relative;
+}
+.mphoto{
+	width: 260px;
+	height: 260px;
+	border: 5px solid #FFFFFF;
+	margin: 0 auto;
+	border-radius: 50%;
+	background: url(../img/IMG_20170727.jpg) top center no-repeat;
+	background-size: cover;
 }

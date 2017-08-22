@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Title</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				user-select: none;
+			}
+			
+			ul,
+			li {
+				list-style: none;
+			}
+			
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			.scene {
+				width: 100%;
+				height: 100%;
+				perspective: 600px;
+			}
+			
+			.box {
+				width: 100%;
+				height: 100%;
+				position: relative;
+				transform-style: preserve-3d;
+			}
+			
+			.box li {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				backface-visibility: visible;
+				font-size: 30px;
+			}
+			
+			.box li:nth-child(1) {
+				/*background: red;*/
+				background-image: url("timg.jpg");
+				transform-origin: top;
+				transform: rotateX(90deg);
+			}
+			
+			.box li:nth-child(2) {
+				/*background: yellow;*/
+				background: url("timg (2).jpg");
+				transform-origin: right;
+				transform: rotateY(90deg);
+			}
+			
+			.box li:nth-child(3) {
+				/*background: blue;*/
+				background-image:url("timg (1).jpg") ;
+				transform-origin: bottom;
+				transform: rotateX(-90deg);
+			}
+			
+			.box li:nth-child(4) {
+				/*background: green;*/
+				background: url("timg (7).jpg");
+				background-repeat: no-repeat;
+				background-size: cover;
+				transform-origin: left;
+				transform: rotateY(-90deg);
+			}
+			
+			.box li:nth-child(5) {
+				/*background: pink;*/
+				background-repeat: no-repeat;
+				background-size: cover;
+                background-image: url("timg (6).jpg");
+				
+				transform: translateZ(200px);
+			}
+			
+			.box li:nth-child(6) {
+				/*background: purple;*/
+                background-image: url("timg (5).jpg");
+			}
+		</style>
+
+		<style>
+			@font-face {
+				font-family: 'iconfont';
+				/* project id 293290 */
+				src: url('//at.alicdn.com/t/font_qpg8txzf7wtp4x6r.eot');
+				src: url('//at.alicdn.com/t/font_qpg8txzf7wtp4x6r.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_qpg8txzf7wtp4x6r.woff') format('woff'), url('//at.alicdn.com/t/font_qpg8txzf7wtp4x6r.ttf') format('truetype'), url('//at.alicdn.com/t/font_qpg8txzf7wtp4x6r.svg#iconfont') format('svg');
+			}
+			
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			
+			.container {
+				width: 600px;
+				height: 400px;
+				margin: 0 auto;
+			}
+			
+			.container video {
+				width: 100%;
+				height: 90%;
+				display: block;
+			}
+			
+			.container .controls {
+				width: 100%;
+				height: 10%;
+				background: #ffffff;
+				display: flex;
+				z-index: 20;
+			}
+			
+			.icon {
+				font-family: 'iconfont';
+				text-align: center;
+				line-height: 40px;
+				font-size: 20px;
+			}
+			
+			.start {
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+			}
+			
+			.reload {
+				width: 40px;
+				height: 40px;
+				cursor: pointer;
+			}
+			
+			.progress {
+				width: auto;
+				height: 10px;
+				background: #cccccc;
+				flex-grow: 1;
+				margin-top: 15px;
+			}
+			
+			.inner {
+				width: 0;
+				height: 10px;
+				background: black;
+			}
+			
+			.time {
+				width: 100px;
+				height: 40px;
+				line-height: 40px;
+				font-size: 12px;
+				text-align: left;
+				padding: 0 10px;
+			}
+			
+			.time span {
+				float: left;
+				width: 45%;
+			}
+			
+			.time i {
+				float: left;
+				width: 10%;
+				text-align: center;
+			}
+			
+			.volume {
+				width: 40px;
+				height: 40px;
+				text-align: center;
+				position: relative;
+			}
+			
+			.volume span {
+				display: block;
+				position: relative;
+				z-index: 2;
+				cursor: pointer;
+			}
+			
+			.bg {
+				width: 40px;
+				height: 150px;
+				background: rgba(255, 255, 255, 0.6);
+				display: none;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+			}
+			
+			.vol {
+				width: 10px;
+				height: 110px;
+				margin: 0 auto;
+				background: lightblue;
+			}
+			
+			.volinner {
+				width: 10px;
+				height: 10px;
+				background: #000000;
+				float: left;
+			}
+			
+			.mask {
+				width: 40px;
+				height: 150px;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				cursor: pointer;
+			}
+			
+			.fullscreen {
+				width: 40px;
+				height: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="scene">
+			<ul class="box">
+				<li>
+					<!--top-->
+				</li>
+				<li>
+					<!--right-->
+				</li>
+				<li>
+					<!--bottom-->
+				</li>
+				<li>
+					<!--left-->
+				</li>
+				<li>
+					<!--front-->
+				</li>
+				<li>
+
+					<div class="container" style="position: absolute;left: 0;right: 0;top: 0;bottom: 0;margin: auto;">
+						<video>
+							<source src="80s_hd.mp4">
+						</video>
+						<div class="controls">
+							<div class="icon start">
+								&#xe6e3;
+							</div>
+							<div class="icon reload">
+								&#xe622;
+							</div>
+							<div class="progress">
+								<div class="inner"></div>
+							</div>
+							<div class="time">
+								<span class="now">00:00</span>
+								<i>/</i>
+								<span class="all">00:00</span>
+							</div>
+							<div class="volume">
+								<span class="icon">&#xe66e;</span>
+								<div class="bg">
+									<div class="vol">
+										<div class="volinner"></div>
+									</div>
+									<div class="mask"></div>
+								</div>
+							</div>
+							<div class="fullscreen icon">&#xe600;</div>
+						</div>
+					</div>
+
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var tops = document.querySelector(".box li:nth-child(1)");
+		var bottom = document.querySelector(".box li:nth-child(3)");
+		var front = document.querySelector(".box li:nth-child(5)");
+		var box = document.querySelector(".box");
+
+		var clientW = window.innerWidth;
+		var clientH = window.innerHeight;
+
+		tops.style.width = bottom.style.width = tops.style.height = bottom.style.height = clientW + "px";
+		bottom.style.top = -(clientW - clientH) + "px";
+		front.style.transform = `translateZ(${clientW}px)`;
+		box.style.transform = "translateZ(-600px)";
+		box.style.transformOrigin = "center center 700px";
+
+		var startangle = 0,
+			nowangle = 0;
+		document.onmousedown = function(e) {
+			var sx = e.clientX;
+			document.onmousemove = function(e) {
+				var cx = e.clientX;
+				nowangle = cx - sx;
+				box.style.transform = `translateZ(-600px) rotateY(${startangle+nowangle}deg)`;
+			}
+			document.onmouseup = function() {
+				startangle += nowangle;
+				document.onmousemove = null;
+				document.onmouseup = null;
+			}
+
+		}
+	</script>
+	<script>
+		var video = document.querySelector("video");
+		var startbtn = document.querySelector(".start");
+		var reload = document.querySelector(".reload");
+		var progress = document.querySelector(".progress");
+		var inner = document.querySelector(".inner");
+		var now = document.querySelector(".time .now");
+		var all = document.querySelector(".time .all");
+		var progress = document.querySelector(".progress");
+		var volume = document.querySelector(".volume");
+		var bg = document.querySelector(".bg");
+		var mask = document.querySelector(".mask");
+		var volinner = document.querySelector(".volinner");
+		var volumeicon = document.querySelector(".volume .icon");
+		var fullscreen = document.querySelector(".fullscreen");
+		var container = document.querySelector(".container");
+
+		var startflag = true;
+		startbtn.onclick = function() {
+			if(startflag) {
+				video.play();
+				startbtn.innerHTML = "&#xe6d2;"
+			} else {
+				video.pause();
+				startbtn.innerHTML = "&#xe6e3;"
+			}
+			startflag = !startflag;
+		}
+		reload.onclick = function() {
+			video.load();
+			startbtn.innerHTML = "&#xe6e3;"
+			startflag = true;
+		}
+		var duration = 0;
+		var nowtime = 0;
+		video.oncanplay = function() {
+			duration = video.duration;
+			all.innerHTML = time(duration);
+		}
+		video.ontimeupdate = function() {
+			nowtime = video.currentTime;
+			var width = nowtime / duration;
+			inner.style.width = width * 100 + "%";
+			now.innerHTML = time(nowtime);
+		}
+
+		function time(t) {
+			var minutes = Math.floor(t / 60);
+			var seconds = Math.floor(t % 60);
+			return(minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
+		}
+
+		progress.onmousedown = function(e) {
+			var ox = e.offsetX;
+			var bili = ox / progress.offsetWidth;
+			var pos = bili * duration;
+			video.currentTime = pos;
+			document.onmousemove = function(e) {
+				var ox = e.clientX - progress.offsetLeft;
+				var bili = ox / progress.offsetWidth;
+				var pos = bili * duration;
+				video.currentTime = pos;
+			};
+			document.onmouseup = function() {
+				document.onmousemove = null;
+				document.onmouseup = null;
+			}
+		}
+		volume.onmouseover = function() {
+			bg.style.display = "block";
+		}
+		volume.onmouseout = function() {
+			bg.style.display = "none";
+			mask.onmousemove = null;
+			mask.onmouseup = null;
+		}
+
+		mask.onmousedown = function(e) {
+			fnvol(e);
+			mask.onmousemove = function(e) {
+				fnvol(e);
+			}
+
+			mask.onmouseup = function() {
+				mask.onmousemove = null;
+				mask.onmouseup = null;
+			}
+		}
+
+		function fnvol(e) {
+			var oy = e.offsetY;
+			oy = oy > 100 ? 100 : oy;
+			volinner.style.marginTop = oy + "px";
+			var v = 1 - oy / 100;
+			video.volume = v;
+			if(v == 0) {
+				volumeicon.innerHTML = "&#xe615;";
+			} else {
+				volumeicon.innerHTML = "&#xe66e;";
+			}
+		}
+
+		var volflag = true;
+		volumeicon.onclick = function() {
+			if(volflag) {
+				volumeicon.innerHTML = "&#xe615;";
+				video.muted = true;
+			} else {
+				volumeicon.innerHTML = "&#xe66e;";
+				video.muted = false;
+			}
+			volflag = !volflag;
+		}
+
+		var fullflag = true;
+		fullscreen.onclick = full;
+		video.ondblclick = full;
+		document.onkeydown = function(e) {
+			if(e.keyCode == 27) {
+				fullflag = false;
+				full();
+
+			}
+		}
+
+		function full() {
+			if(fullflag) {
+				fullscreen.innerHTML = "&#xe600;";
+				//            container.webkitRequestFullScreen();
+				//            container.mozRequestFullScreen();
+				container.style.width = "100%";
+				container.style.height = "100%";
+			} else {
+				fullscreen.innerHTML = "&#xe601;";
+				//            document.webkitCancelFullScreen();
+				//            document.mozCancelFullScreen();
+				container.style.width = "600px";
+				container.style.height = "400px";
+			}
+			fullflag = !fullflag;
+		}
+	</script>
+
+</html>
